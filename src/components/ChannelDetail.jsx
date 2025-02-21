@@ -6,40 +6,46 @@ import { Videos, ChannelCard, Loader } from "./";
 import { axiosGetReq } from "../utils";
 
 const ChannelDetail = () => {
-  const [channelDetail, setChannelDetail] = useState();
+  const [channelDetail, setChannelDetail] = useState(null);
   const [videos, setVideos] = useState(null);
 
   const { id } = useParams();
 
   useEffect(() => {
     const fetchResults = async () => {
-      const data = await axiosGetReq(`channels?part=snippet&id=${id}`);
-      setChannelDetail(data?.items[0]);
+      try {
+        const data = await axiosGetReq(`channels?part=snippet&id=${id}`);
+        setChannelDetail(data?.items?.[0] || null);
 
-      const videosData = await axiosGetReq(
-        `search?channelId=${id}&part=snippet%2Cid&order=date`
-      );
-      setVideos(videosData?.items);
+        const videosData = await axiosGetReq(
+          `search?channelId=${id}&part=snippet,id&order=date`
+        );
+        setVideos(videosData?.items || []);
+      } catch (error) {
+        console.error("Error fetching channel details:", error);
+      }
     };
 
-    fetchResults();
-  }, []);
+    if (id) fetchResults();
+  }, [id]); 
 
-  if (!videos) <Loader />;
+  if (!videos) return <Loader />; 
 
   return (
     <Box minHeight="95vh">
       <Box>
-        <img
-          src={channelDetail?.brandingSettings?.image?.bannerExternalUrl}
-          alt="channel-art"
-          style={{
-            height: "300px",
-            width: "100%",
-            borderRadius: "8px",
-            objectFit: "cover",
-          }}
-        />
+        {channelDetail?.brandingSettings?.image?.bannerExternalUrl && (
+          <img
+            src={channelDetail?.brandingSettings?.image?.bannerExternalUrl}
+            alt="channel-art"
+            style={{
+              height: "300px",
+              width: "100%",
+              borderRadius: "8px",
+              objectFit: "cover",
+            }}
+          />
+        )}
         <ChannelCard channelDetail={channelDetail} mt="-93px" />
       </Box>
       <Box p={2}>

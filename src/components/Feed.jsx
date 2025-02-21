@@ -45,7 +45,7 @@ const Feed = () => {
             textAlign: "center",
           }}
         >
-          Copyright © 2022 YT, Inc.
+          Copyright © 2025 AURA MIRROR
         </p>
       </Box>
 
@@ -67,17 +67,6 @@ const Feed = () => {
           {selectedCategory || "Recommended"}{" "}
           <span style={{ color: "#FC1503" }}>Videos</span>
         </Typography>
-        {/* <Stack direction='row' gap='20px' sx={{ width: '80%', margin: 'auto' }}>
-          <Link to='/video/jfKfPfyJRdk' style={{width:'100%'}}>
-            <img
-              style={{ height: '400px', width: '100%' }}
-              src={
-                'https://media.npr.org/assets/img/2022/07/14/lofi-girl-picture_custom-27a34c6d0ca36f828940156e7bd3c964140cff9c.jpg'
-              }
-              alt='recommended video'
-            />
-          </Link>
-        </Stack> */}
         <Videos videos={videos} />
       </Box>
     </Stack>

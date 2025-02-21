@@ -1,17 +1,25 @@
+/* Global Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
+/* Default Link Styling */
 a {
   text-decoration: none;
   color: black;
 }
 
+/* Scrollbar Customization */
 ::-webkit-scrollbar {
-  width: 0px;
+  width: 5px; /* Changed from 0px to allow scrolling */
   height: 5px;
 }
 
@@ -25,52 +33,57 @@ a {
   background-color: transparent;
 }
 
-.category-btn:hover {
-  background-color: #FC1503 !important;
-  color: white !important;
-}
-
-.category-btn:hover span{
-  color: white !important;
-}
-
-.react-player {
-  height: 77vh !important;
-  width: 100% !important;
-}
-
-.search-bar{
-  border:none;
-  outline:none;
-  width:350px;
-}
-
-.category-btn{
+/* Category Button Styling */
+.category-btn {
   font-weight: bold !important;
   text-transform: capitalize;
   display: flex;
   align-items: center;
-  justify-content: start;
-  cursor:pointer;
+  justify-content: flex-start; /* Fixed from 'start' */
+  cursor: pointer;
   background: transparent;
   outline: none;
   border: none;
-
-  padding: 7px 15px;
+  
+  padding: 10px 18px; /* Increased padding for better touch */
   margin: 10px 0px;
   border-radius: 20px;
   transition: all 0.3s ease;
 }
 
+/* Category Button Hover Effect */
+.category-btn:hover {
+  background-color: #FC1503 !important;
+  color: white !important;
+}
+
+.category-btn:hover span {
+  color: white !important;
+}
+
+/* Video Player */
+.react-player {
+  height: 77vh !important;
+  width: 100% !important;
+}
+
+/* Search Bar */
+.search-bar {
+  border: none;
+  outline: none;
+  width: 350px;
+}
+
+/* Responsive Styles */
 @media screen and (max-width: 900px) {
-  .category-btn{
+  .category-btn {
     margin: 10px;
   }
 }
 
-@media screen and (max-width:800px){
-  .copyright{
-    display:none !important;
+@media screen and (max-width: 800px) {
+  .copyright {
+    display: none !important;
   }
 }
 
@@ -82,7 +95,14 @@ a {
   .react-player {
     height: 45vh !important;
   }
-  .search-bar{
-    width:200px;
+
+  .search-bar {
+    width: 250px; /* Improved responsiveness */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .search-bar {
+    width: 180px; /* Adjusted for smaller screens */
   }
 }
