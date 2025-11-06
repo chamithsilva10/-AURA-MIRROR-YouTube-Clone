@@ -3,106 +3,119 @@
 *::before,
 *::after {
   box-sizing: border-box;
-}
-
-html,
-body {
   margin: 0;
   padding: 0;
+}
+
+/* Modern CSS Variables */
+:root {
+  --primary-bg: #1E1E1E;
+  --secondary-bg: #F3EFEB;
+  --accent-yellow: #f7ffdc;
+  --accent-cyan: #d1f3f5;
+  --accent-lavender: #ddd9ff;
+  --accent-peach: #ffddc4;
+  --accent-purple: #9C93E8;
+  --text-primary: #1E1E1E;
+  --text-secondary: #666;
+  --white: #ffffff;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--white);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accent-purple), var(--accent-cyan));
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--secondary-bg);
+}
+
+/* Selection */
+::selection {
+  background-color: var(--accent-purple);
+  color: var(--white);
+}
+
+::-moz-selection {
+  background-color: var(--accent-purple);
+  color: var(--white);
 }
 
 /* Default Link Styling */
 a {
   text-decoration: none;
-  color: black;
-}
-
-/* Scrollbar Customization */
-::-webkit-scrollbar {
-  width: 5px; /* Changed from 0px to allow scrolling */
-  height: 5px;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: rgb(114, 113, 113);
-  border-radius: 10px;
-  height: 200px;
-}
-
-::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-
-/* Category Button Styling */
-.category-btn {
-  font-weight: bold !important;
-  text-transform: capitalize;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; /* Fixed from 'start' */
-  cursor: pointer;
-  background: transparent;
-  outline: none;
-  border: none;
-  
-  padding: 10px 18px; /* Increased padding for better touch */
-  margin: 10px 0px;
-  border-radius: 20px;
+  color: inherit;
   transition: all 0.3s ease;
 }
 
-/* Category Button Hover Effect */
-.category-btn:hover {
-  background-color: #FC1503 !important;
-  color: white !important;
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.2;
 }
 
-.category-btn:hover span {
-  color: white !important;
+/* Utility Classes */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-/* Video Player */
-.react-player {
-  height: 77vh !important;
-  width: 100% !important;
-}
-
-/* Search Bar */
-.search-bar {
-  border: none;
-  outline: none;
-  width: 350px;
-}
-
-/* Responsive Styles */
-@media screen and (max-width: 900px) {
-  .category-btn {
-    margin: 10px;
+/* Loading Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media screen and (max-width: 800px) {
-  .copyright {
-    display: none !important;
+/* Responsive breakpoints */
+@media screen and (max-width: 1024px) {
+  .container {
+    padding: 0 1.5rem;
   }
 }
 
-@media screen and (max-width: 600px) {
-  .scroll-horizontal {
-    overflow: auto !important;
-  }
-
-  .react-player {
-    height: 45vh !important;
-  }
-
-  .search-bar {
-    width: 250px; /* Improved responsiveness */
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
   }
 }
 
 @media screen and (max-width: 480px) {
-  .search-bar {
-    width: 180px; /* Adjusted for smaller screens */
+  html {
+    font-size: 14px;
   }
 }
